@@ -29,7 +29,7 @@ const BlogDetails = () => {
           <p>Written by { blog.author }</p>
           <div>{ blog.body }</div>
           <button onClick={()=> setOpenModal(true)}>Edit</button>
-          {openModal && <Modal closeModal={setOpenModal}/>}
+          {openModal && <Modal blog={blog} closeModal={setOpenModal}/>}
           <button className="delete-btn" onClick={handleClick}>Delete</button>
           
         </article>
