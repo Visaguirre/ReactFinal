@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import useFetch from "./useFetch";
 import { useState } from "react";
 
+
 const BlogDetails = () => {
   const { id } = useParams();
   const { data: blog, error, isPending } = useFetch('http://localhost:8000/blogs/' + id);
@@ -28,9 +29,9 @@ const BlogDetails = () => {
           <h2>{ blog.title }</h2>
           <p>Written by { blog.author }</p>
           <div>{ blog.body }</div>
-          <button onClick={()=> setOpenModal(true)}>Edit</button>
+          {openModal || <button onClick={()=> setOpenModal(true)}>Edit</button>}
+          {openModal || <button className="delete-btn" onClick={handleClick}>Delete</button>}
           {openModal && <Modal blog={blog} closeModal={setOpenModal}/>}
-          <button className="delete-btn" onClick={handleClick}>Delete</button>
           
         </article>
       )}
